@@ -4,7 +4,7 @@ import './App.css';
 function Square({ value, onSquareClick }) {
   return (
     <button className="square" onClick={onSquareClick}>
-      {value}
+      <label>{value}</label>
     </button>
   );
 }
@@ -27,9 +27,7 @@ function Board({ xIsNext, squares, onPlay }) {
   let status;
   if (winner) {
     status = 'Winner: ' + winner;
-  } else {
-    status = 'Next player: ' + (xIsNext ? 'X' : 'O');
-  }
+  } 
 
   return (
     <>
@@ -77,9 +75,9 @@ export default function App() {
         <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} />
       </div>
       <div className="game-info">
-        <ol><li>
-        <button onClick={() => jumpTo(0)}>Reset</button>
-      </li></ol>
+        <div>
+        <button type="button" onClick={() => jumpTo(0)}>Reset</button>
+        </div>
       </div>
     </div>
   );
